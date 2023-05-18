@@ -219,7 +219,6 @@ extension ChatCompletion {
         public let created: Int64
         public let model: String
         public let choices: [DeltaChoice]
-        public let usage: Usage
         
         public struct DeltaChoice: Codable {
             enum CodingKeys: String, CodingKey {
