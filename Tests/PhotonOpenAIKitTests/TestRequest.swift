@@ -83,8 +83,8 @@ class TestRequest: XCTestCase {
     }
     
     private func createBodyWithConvenientParameters() -> ChatCompletion.Request.Body {
-        return ChatCompletion.Request.Body(messages: [.init(role: "system", content: "system"),
-                                                      .init(role: "user", content: "user"),
-                                                      .init(role: "assistant", content: "assistant")])
+        return ChatCompletion.Request.Body(messages: [.init(role: "system", content: "system", name: nil),
+                                                      .init(role: "user", content: "user", name: nil),
+                                                      .init(role: "assistant", content: "assistant", name: nil)])
     }
 }

@@ -122,16 +122,16 @@ extension ChatCompletion {
                         systemMessage: String? = nil,
                         assistantMessage: String? = nil) {
                 var messages: [ChatCompletion.Request.Message] = [
-                    .init(role: "user", content: userMessage),
+                    .init(role: "user", content: userMessage, name: nil),
                 ]
                 
                 if let systemMessage = systemMessage {
                     // System message should be at first
-                    messages.insert(.init(role: "system", content: systemMessage), at: 0)
+                    messages.insert(.init(role: "system", content: systemMessage, name: nil), at: 0)
                 }
                 
                 if let assistantMessage = assistantMessage {
-                    messages.append(.init(role: "assistant", content: assistantMessage))
+                    messages.append(.init(role: "assistant", content: assistantMessage, name: nil))
                 }
                 
                 self.init(model: model, messages: messages)
@@ -147,10 +147,12 @@ extension ChatCompletion {
         public struct Message: Codable {
             public let role: String
             public let content: String
+            public let name: String?
             
-            public init(role: String, content: String) {
+            public init(role: String, content: String, name: String?) {
                 self.role = role
                 self.content = content
+                self.name = name
             }
         }
         
