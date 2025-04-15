@@ -131,6 +131,11 @@ public class AlamofireAdaptor: NetworkAdaptor {
         
         if let bodyData = try? self.jsonEncoder.encode(body) {
             request.httpBody = bodyData
+            if let bodyString = String(data: bodyData, encoding: .utf8) {
+                runOnDefaultLog { logger in
+                    logger.log("Request body: \(bodyString)")
+                }
+            }
         }
     }
 }
@@ -143,7 +148,11 @@ extension DataResponse {
             error = RequestError(self.error?.localizedDescription ?? "Unknown error description")
         } else if let response = self.response,
                   !(200..<300).contains(response.statusCode) {
-            error = RequestError("Response with non-success status code", code: response.statusCode)
+            if let data = self.data, let str = String(data: data, encoding: .utf8) {
+                error = RequestError("Response error: \(str)", code: response.statusCode)
+            } else {
+                error = RequestError("Response with non-success status code", code: response.statusCode)
+            }
         } else {
             error = nil
         }
