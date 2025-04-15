@@ -7,7 +7,7 @@
 
 import Foundation
 
-public let openAIHost = "api.openai.com"
+public let openAIHost = "api.deepseek.com"
 
 public enum AIRequestUrl: String {
     case chatCompletions = "/v1/chat/completions"

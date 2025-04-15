@@ -40,6 +40,7 @@ public class PhotonAIClient {
         var defaultHeaders = Dictionary<String, String>()
         defaultHeaders["Authorization"] = "Bearer \(apiKey)"
         defaultHeaders["Content-Type"] = "application/json"
+        defaultHeaders["Accept"] = "application/json"
         
         let configuration = SessionConfiguration(defaultHeaders: defaultHeaders, scheme: scheme, host: host)
         

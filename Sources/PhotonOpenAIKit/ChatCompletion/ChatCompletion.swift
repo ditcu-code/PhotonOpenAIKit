@@ -105,9 +105,9 @@ extension ChatCompletion {
             public var user: String? = nil
             
             /// Initialize with a model and some messages, with stream mode.
-            /// - parameter model: an ``AIModel``, defaults to .gpt_3_5_turbo
+            /// - parameter model: an ``AIModel``, defaults to .deepseek_chat
             /// - parameter messages: some messages
-            public init(model: AIModel = .gpt_3_5_turbo,
+            public init(model: AIModel = .deepseek_chat,
                         messages: [Message]) {
                 self.model = model
                 self.messages = messages
@@ -117,7 +117,7 @@ extension ChatCompletion {
             /// - parameter system: system role
             /// - parameter userMessage: user role
             /// - parameter assistant: assistant role
-            public init(model: AIModel = .gpt_3_5_turbo,
+            public init(model: AIModel = .deepseek_chat,
                         userMessage: String,
                         systemMessage: String? = nil,
                         assistantMessage: String? = nil) {
